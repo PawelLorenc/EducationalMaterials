@@ -37,16 +37,55 @@
                 MaterialCounter = 1
             };
 
-            var MaterialType = new MaterialType()
+            var materialType = new MaterialType()
             {
                 Name = "Video Tutorial",
-                Definition = "video tutorial 
-is a video material that
-focuses mostly on guiding
-step - by - step in dedicated
-topic",
+                Definition = "video tutorial that shows step by step solution",
+            };
+            var review = new Review()
+            {
+                TextReview = "Awesome resource",
+                PointReview = 9               
+            };
+            material.Author = author;
+            material.Material = materialType;
+            material.Reviews.Add(review);
+            materials.Add(material);
 
-            }
+            var material2 = new MaterialNavigationPoint()
+            {
+                Title = "Solid Principles",
+                Description = "Introduction to solid principles by Uncle Bob",
+                Location = "Google drive",
+            };
+
+            var author2 = new Author()
+            {
+                Name = "Uncle Bob",
+                Description = "Computer programmer with 20 years of experience",
+                MaterialCounter = 1
+            };
+
+            var materialType2 = new MaterialType()
+            {
+                Name = "Video tutorial with homework",
+                Definition = "video tutorial",
+            };
+            var review2 = new Review()
+            {
+                TextReview = "Average",
+                PointReview = 5
+            };
+
+            material2.Author = author2;
+            material2.Material = materialType2;
+            material2.Reviews.Add(review2);
+            materials.Add(material2);
+
+            return materials;
+
+
+
         }
 
     }

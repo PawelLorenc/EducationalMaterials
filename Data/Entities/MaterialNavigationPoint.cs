@@ -15,10 +15,10 @@
         public int MaterialTypeId { get; set; }
         public MaterialType Material { get; set; }
 
-        public List<Review> Reviews { get; set; }
+        public List<Review> Reviews { get; set; } = new List<Review>();
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime PublishingDate { set; get; }
+        public DateTime PublishingDate { set; get; } = DateTime.Now;
     }
 }
