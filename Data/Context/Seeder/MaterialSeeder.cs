@@ -12,13 +12,37 @@
         {
             if (_context.Database.CanConnect())
             {
+
                 if (!_context.MaterialNavigationPoints.Any())
                 {
                     var materials = GetMaterials();
                     _context.MaterialNavigationPoints.AddRange(materials);
+                    _context.SaveChanges();
+                }
+                if (!_context.Roles.Any())
+                {
+                    var roles = GetRoles();
+                    _context.Roles.AddRange(roles);
+                    _context.SaveChanges();
                 }
             }
         }
+        private IEnumerable<Role> GetRoles()
+        {
+            var roles = new List<Role>()
+            {
+                new Role()
+                {
+                    Name = "User"
+                },
+                new Role()
+                {
+                    Name = "Admin"
+                }
+            };
+            return roles;
+        }
+
         private IEnumerable<MaterialNavigationPoint> GetMaterials()
         {
             var materials = new List<MaterialNavigationPoint>();

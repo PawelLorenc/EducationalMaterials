@@ -7,3 +7,7 @@ global using System.Linq;
 global using System.Text;
 global using System.Threading.Tasks;
 global using Data.Entities.User;
+global using Data.Context;
+global using Data.DAL.Interfaces;
+
+

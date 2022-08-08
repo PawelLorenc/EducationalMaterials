@@ -7,6 +7,7 @@
         public DbSet<MaterialType> MaterialTypes { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         public EducationalMaterialContext(DbContextOptions<EducationalMaterialContext> options) : base(options)
         {
@@ -71,7 +72,29 @@
                 m.Property(x => x.PointReview)
                 .IsRequired();
             });
+            builder.Entity<Role>(m =>
+            {
+                m.HasMany(a => a.Users)
+                .WithOne(b => b.Role)
+                .HasForeignKey(a => a.RoleId);
+                m.Property(a => a.Name)
+                .HasColumnType("varchar(50)")
+                .IsRequired();
+            });
+            builder.Entity<User>(m =>
+            {
+                m.HasOne(a => a.Role)
+                .WithMany(b => b.Users);
+                m.Property(a => a.UserName)
+                .HasColumnType("varchar(50)")
+                .IsRequired();
+                m.Property(a => a.Email)
+                .HasColumnType("varchar(50)")
+                .IsRequired();
+                m.Property(a => a.Password)
+                .HasColumnType("varchar(50)")
+                .IsRequired();
+            });
         }
-
     }
 }
