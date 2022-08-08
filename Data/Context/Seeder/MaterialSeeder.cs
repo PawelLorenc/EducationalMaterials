@@ -14,7 +14,7 @@
             {
                 if (!_context.MaterialNavigationPoints.Any())
                 {
-                    var materials = GetMaterials;
+                    var materials = GetMaterials();
                     _context.MaterialNavigationPoints.AddRange(materials);
                 }
             }
@@ -45,7 +45,7 @@
             var review = new Review()
             {
                 TextReview = "Awesome resource",
-                PointReview = 9               
+                PointReview = 9
             };
             material.Author = author;
             material.Material = materialType;
@@ -83,9 +83,6 @@
             materials.Add(material2);
 
             return materials;
-
-
-
         }
 
     }

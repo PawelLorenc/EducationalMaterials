@@ -6,6 +6,7 @@
         public DbSet<MaterialNavigationPoint> MaterialNavigationPoints { get; set; }
         public DbSet<MaterialType> MaterialTypes { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public EducationalMaterialContext(DbContextOptions<EducationalMaterialContext> options) : base(options)
         {
@@ -70,7 +71,6 @@
                 m.Property(x => x.PointReview)
                 .IsRequired();
             });
-
         }
 
     }
