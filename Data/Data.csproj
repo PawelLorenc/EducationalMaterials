@@ -10,7 +10,6 @@
     <Folder Include="Context\" />
     <Folder Include="DAL\Interfaces\" />
     <Folder Include="DAL\Repositories\" />
-    <Folder Include="Entities\" />
   </ItemGroup>
 
 </Project>
