@@ -1,6 +1,6 @@
 ﻿namespace Data.Entities
 {
-    public record Material
+    public record MaterialType
     {
         [Key]
         public int Id { get; set; }
@@ -9,9 +9,9 @@
         [Required]
         public string Definition { get; set; }
 
-        public int AuthorId { get; set; }
-        public Author Author { get; set; }
+        public int MaterialNavigationPointId { get; set; }
+        public MaterialNavigationPoint MaterianNavigationPoint { get; set; }
 
-        public List<Review> Reviews { get; set; } = new List<Review>();
+        
     }
 }

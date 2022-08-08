@@ -4,8 +4,8 @@
     {
         public int id { get; set; }
 
-        public int MaterialId { get; set; }
-        public Material Material { get; set; }
+        public int MaterialNAvigationPointId { get; set; }
+        public MaterialNavigationPoint Material { get; set; }
 
         public string TextReview { get; set; }
 
