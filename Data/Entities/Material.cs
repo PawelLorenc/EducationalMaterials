@@ -1,6 +1,6 @@
 ﻿namespace Data.Entities
 {
-    public class MaterialType
+    public class Material
     {
     }
 }

@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Data.Entities
+﻿namespace Data.Entities
 {
-    internal class MaterialNavigationPoint
+    public record MaterialNavigationPoint
     {
+        public int Id { get; set; }
+        public Author Author { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Location { get; set; }
+        public Material Material { get; set; }
+        public List<Review> Reviews { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime PublishingDate { set; get; }
     }
 }
