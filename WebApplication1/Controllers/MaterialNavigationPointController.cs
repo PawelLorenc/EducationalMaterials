@@ -12,6 +12,7 @@
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<List<MaterialNavigationPointDto>>> GetAll()
         {
             var MaterialDto = await _materialNavService.GetAll();

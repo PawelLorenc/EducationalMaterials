@@ -41,6 +41,9 @@ builder.Services.AddScoped<IMaterialNavigationPointService, MaterialNavigationPo
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IMaterialTypeRepository, MaterialTypeRepository>();
 
+builder.Services.AddScoped<IMaterialTypeService, MaterialTypeService>();
+builder.Services.AddScoped<IMaterialTypeRepository, MaterialTypeRepository>();
+
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 
 builder.Services.AddCors(options =>

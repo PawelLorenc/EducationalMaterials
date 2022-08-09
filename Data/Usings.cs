@@ -10,3 +10,5 @@ global using System.ComponentModel.DataAnnotations;
 global using System.Linq;
 global using System.Threading.Tasks;
 global using System;
+global using Data.DTO.UserDTO.CreateDTO;
+global using Data.DTO.UserDTO;

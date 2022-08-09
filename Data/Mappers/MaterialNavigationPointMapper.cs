@@ -1,6 +1,4 @@
-﻿using Data.DTO.UserDTO.CreateDTO;
-
-namespace Data.Mappers
+﻿namespace Data.Mappers
 {
     public class MaterialNavigationPointMapper : Profile
     {
