@@ -1,7 +1,4 @@
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
-using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +20,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<EducationalMaterialContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MaterialsConnectionString")));
@@ -36,8 +40,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddSwaggerGen(options =>
 {
-    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory,
-        $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+    //options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory,
+    //    $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
 
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
@@ -84,8 +88,10 @@ using (var scope = app.Services.CreateScope())
 
 app.UseHttpsRedirection();
 
-// app.UseAuthorization();
+app.UseAuthentication();
 
-// app.MapControllers();
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();

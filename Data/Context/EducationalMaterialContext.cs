@@ -78,7 +78,7 @@
                 .WithOne(b => b.Role)
                 .HasForeignKey(a => a.RoleId);
                 m.Property(a => a.Name)
-                .HasColumnType("varchar(50)")
+                .HasColumnType("varchar(200)")
                 .IsRequired();
             });
             builder.Entity<User>(m =>
@@ -86,13 +86,13 @@
                 m.HasOne(a => a.Role)
                 .WithMany(b => b.Users);
                 m.Property(a => a.UserName)
-                .HasColumnType("varchar(50)")
+                .HasColumnType("varchar(200)")
                 .IsRequired();
                 m.Property(a => a.Email)
-                .HasColumnType("varchar(50)")
+                .HasColumnType("varchar(200)")
                 .IsRequired();
                 m.Property(a => a.Password)
-                .HasColumnType("varchar(50)")
+                .HasColumnType("varchar(200)")
                 .IsRequired();
             });
         }

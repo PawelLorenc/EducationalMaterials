@@ -9,5 +9,6 @@ global using System.Threading.Tasks;
 global using Data.Entities.User;
 global using Data.Context;
 global using Data.DAL.Interfaces;
+global using Data.DTO.UserDTO;
 
 

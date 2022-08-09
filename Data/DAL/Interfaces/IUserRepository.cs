@@ -10,5 +10,6 @@ namespace Data.DAL.Interfaces
     {
         public void Save();
         public void Add(User entity);
+        public User GetByEmail(string email);
     }
 }
