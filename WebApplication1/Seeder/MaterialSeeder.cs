@@ -3,10 +3,12 @@
     public class MaterialSeeder
     {
         private readonly EducationalMaterialContext _context;
+        private readonly IPasswordHasher<User> _passwordHasher;
 
-        public MaterialSeeder(EducationalMaterialContext context)
+        public MaterialSeeder(EducationalMaterialContext context, IPasswordHasher<User> passwordHasher)
         {
             _context = context;
+            _passwordHasher = passwordHasher;
         }
         public void Seed()
         {
@@ -23,6 +25,18 @@
                 {
                     var roles = GetRoles();
                     _context.Roles.AddRange(roles);
+                    _context.SaveChanges();
+                }
+                if (!_context.Users.Any())
+                {
+                    var admin = new User
+                    {
+                        Email = "admin@admin.pl",
+                        Role = _context.Roles.First(r => r.Name.Equals("Admin")),
+                        UserName = "Admin"
+                    };
+                    admin.Password = _passwordHasher.HashPassword(admin, "123456");
+                    _context.Users.Add(admin);
                     _context.SaveChanges();
                 }
             }
@@ -72,7 +86,7 @@
                 PointReview = 9
             };
             material.Author = author;
-            material.Material = materialType;
+            material.MaterialType = materialType;
             material.Reviews.Add(review);
             materials.Add(material);
 
@@ -102,7 +116,7 @@
             };
 
             material2.Author = author2;
-            material2.Material = materialType2;
+            material2.MaterialType = materialType2;
             material2.Reviews.Add(review2);
             materials.Add(material2);
 

@@ -2,7 +2,7 @@
 {
     public record Review
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
         public int MaterialNAvigationPointId { get; set; }
         public MaterialNavigationPoint Material { get; set; }

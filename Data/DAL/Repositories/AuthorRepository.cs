@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Data.DAL.Repositories
+﻿namespace Data.DAL.Repositories
 {
-    internal class AuthorRepository
+    public class AuthorRepository : IAuthorRepository
     {
+        private readonly EducationalMaterialContext _context;
+
+        public AuthorRepository(EducationalMaterialContext context)
+        {
+            _context = context;
+        }
+        public async Task<bool> IsExistingById(int id)
+        {
+        return await _context.Authors
+                .AnyAsync(author => author.Id.Equals(id));
+        }
     }
 }

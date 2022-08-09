@@ -13,7 +13,7 @@
         public Author Author { get; set; }
 
         public int MaterialTypeId { get; set; }
-        public MaterialType Material { get; set; }
+        public MaterialType MaterialType { get; set; }
 
         public List<Review> Reviews { get; set; } = new List<Review>();
 

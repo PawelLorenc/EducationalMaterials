@@ -8,10 +8,7 @@
         public string Name { get; set; }
         [Required]
         public string Definition { get; set; }
-
-        public int MaterialNavigationPointId { get; set; }
-        public MaterialNavigationPoint MaterianNavigationPoint { get; set; }
-
-        
+        public List<MaterialNavigationPoint> MaterianNavigationPoint { get; set; }
+                
     }
 }

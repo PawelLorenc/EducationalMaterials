@@ -26,7 +26,7 @@ builder.Services.AddAuthorization(options =>
         .RequireAuthenticatedUser()
         .Build();
 });
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<EducationalMaterialContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MaterialsConnectionString")));
@@ -34,8 +34,22 @@ builder.Services.AddScoped<MaterialSeeder>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();  
 
 builder.Services.AddScoped<IUserRepository<User>, UserRepository>();
+builder.Services.AddScoped<IMaterialNavigationPointRepository, MaterialNavigationPointRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IMaterialNavigationPointService, MaterialNavigationPointService>();
 
+builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+builder.Services.AddScoped<IMaterialTypeRepository, MaterialTypeRepository>();
+
+builder.Services.AddScoped<ErrorHandlingMiddleware>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(build =>
+    {
+        build.AllowAnyOrigin();
+    });
+});
 
 
 builder.Services.AddSwaggerGen(options =>
@@ -70,9 +84,9 @@ builder.Services.AddSwaggerGen(options =>
 }
 );
 
-
-
 var app = builder.Build();
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
