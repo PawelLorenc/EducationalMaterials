@@ -41,8 +41,12 @@ builder.Services.AddScoped<IMaterialNavigationPointService, MaterialNavigationPo
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IMaterialTypeRepository, MaterialTypeRepository>();
 
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+builder.Services.AddScoped<IReviewService, ReviewService>();
+
 builder.Services.AddScoped<IMaterialTypeService, MaterialTypeService>();
-builder.Services.AddScoped<IMaterialTypeRepository, MaterialTypeRepository>();
+
+builder.Services.AddScoped<IAuthorService, AuthorService>();
 
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 

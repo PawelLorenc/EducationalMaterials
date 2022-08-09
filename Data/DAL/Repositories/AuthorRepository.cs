@@ -13,5 +13,11 @@
         return await _context.Authors
                 .AnyAsync(author => author.Id.Equals(id));
         }
+        public async Task<List<Author>> GetAll()
+        {
+            return await _context.Authors
+                .ToListAsync();
+
+        }
     }
 }

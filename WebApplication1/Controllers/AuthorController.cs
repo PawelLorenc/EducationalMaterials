@@ -10,5 +10,14 @@
         {
             _authorService = authorService;
         }
+
+        [HttpGet]
+        [Authorize(Roles = "User")]
+        public async Task<ActionResult<List<AuthorDto>>> GetAll()
+        {
+            var authorDto = await _authorService.GetAll();
+            return Ok(authorDto);
+        }
+
     }
 }
